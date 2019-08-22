@@ -1,0 +1,9 @@
+//! utilities
+@import "./styles/utils/mixins";              // global mixins
+@import "./styles/utils/variables";           // global variables
+@import "./styles/images/svgs";               // to data uri converted images
+//! setup
+@import "./styles/setup/normalize";           // normalize browsers to make more consistent
+
+//! global styles
+@import "./styles/global/global";             // global styles
