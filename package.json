@@ -45,7 +45,6 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "bulma": "^0.7.5",
     "lazysizes": "^4.1.8"
   }
 }
