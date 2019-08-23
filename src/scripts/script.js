@@ -1,5 +1,63 @@
-console.log('%c Hello from /scripts/script.js ', 'background: lemonchiffon; border: 1px solid #fff');
-console.log('%c Welcome to tris-webpack-boilerplate! ', 'background: lemonchiffon; border: 1px solid #fff');
-console.log('%c Coded by: https://tris.codes 💠', 'background: lavenderblush; border: 1px solid #000; padding: 4px; padding-top: 10px; padding-bottom: 8px;');
+console.log('%c angular.hamburg ', 'background: #db002f; border: 1px solid #fff');
 
-// add custom js below
+class Typer {
+  constructor(selector) {
+    this.words = {
+      'developers ': '☕',
+      'beginners': '🔥',
+      'unicorns': '🦄',
+      'hackers': '💀',
+      'everyone': '❤'
+    };
+    this.forward = true;
+    this.wait = false;
+
+    this.i = 0;
+    this.j = 0;
+
+    [...document.querySelectorAll(selector)].forEach(e => {
+      window.console.log("typing");
+      setTimeout(this.typing(e), 450);
+    });
+  }
+
+  delay() {
+    return Math.floor(
+          Math.random() * (this.forward ? 350 : 100)
+        ) + (this.wait ? 600 : (this.forward ? 100 : 50));
+  }
+
+  nextWord() {
+    let word = '';
+
+    if (this.i === this.words.length) this.i = 0;
+
+    word = Object.keys(this.words)[this.i];
+
+    if (this.j === word.length) {
+      this.forward = false;
+      this.wait = true;
+      this.j--;
+      return `${word} ${this.words[Object.keys(this.words)[this.i]]}`;
+    }
+
+    if (this.j === -1) {
+      this.forward = true;
+      this.wait = true;
+      this.j = 0;
+      this.i++;
+      return '';
+    }
+
+    return word.slice(0, this.forward ? ++this.j : this.j--);
+  }
+
+  typing(e) {
+    e.textContent = this.nextWord();
+    setTimeout(() => { this.typing(e) }, this.delay());
+  }
+}
+
+// {
+//   new Typer('#typer');
+// }
